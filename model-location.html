@@ -212,27 +212,27 @@
 public class Location
 {
     //Column
-    [ECRUD.Coluna("LOCATION_ID")]
+    [ECRUD.Column("LOCATION_ID")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.NUMBER)]
     public long? LocationId { get; set; }
 
     //Column
-    [ECRUD.Coluna("STREET_ADDRESS")]
+    [ECRUD.Column("STREET_ADDRESS")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string StreetAddress { get; set; }
 
     //Column
-    [ECRUD.Coluna("POSTAL_CODE")]
+    [ECRUD.Column("POSTAL_CODE")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string PostalCode { get; set; }
 
     //Column
-    [ECRUD.Coluna("CITY")]
+    [ECRUD.Column("CITY")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string City { get; set; }
 
     //Column
-    [ECRUD.Coluna("STATE_PROVINCE")]
+    [ECRUD.Column("STATE_PROVINCE")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string StateProvince { get; set; }
 }

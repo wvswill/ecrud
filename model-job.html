@@ -212,22 +212,22 @@
 public class Job
 {
     //Column
-    [ECRUD.Coluna("JOB_ID")]
+    [ECRUD.Column("JOB_ID")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string Id { get; set; }
 
     //Column
-    [ECRUD.Coluna("JOB_TITLE")]
+    [ECRUD.Column("JOB_TITLE")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.VARCHAR2)]
     public string JobTitle { get; set; }
 
     //Column
-    [ECRUD.Coluna("MIN_SALARY")]
+    [ECRUD.Column("MIN_SALARY")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.NUMBER)]
     public long? MinSalary { get; set; }
 
     //Column
-    [ECRUD.Coluna("MAX_SALARY")]
+    [ECRUD.Column("MAX_SALARY")]
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.NUMBER)]
     public long? MaxSalary { get; set; }
 }
