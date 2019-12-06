@@ -217,6 +217,18 @@
         &ltadd name="HR" connectionString="Data Source=HR;Id=sys;Password=yourpassword"/&gt
     &lt/connectionStrings&gt
 &lt/configuration&gt</code></pre>
+                                <h3>Code</h3>
+
+                                <p>Configuration for the appsettings.json file. Requires the PathLog and PathFile keys. The connectionString will be used in the enum.</p>
+                                <pre><code class="json">{
+"ConnectionStrings": {
+    "HR": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DESKTOP-KIC6KFS.localdomain)(PORT=1521))(CONNECT_DATA=(SERVER = DEDICATED)(SERVICE_NAME = XE)));User Id=sys;Password=19851988WV;DBA Privilege=SYSDBA"
+},
+"ECRUDLog": {
+    "PathLog": "C:\\ECRUDLog\\ECRUD",
+    "PathFile": "C:\\ECRUDLog\\ECRUD\\ECRUD.txt"
+}
+}</code></pre>
                             </section>
                         </div>
                     </div>
