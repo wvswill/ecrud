@@ -205,15 +205,27 @@
 
                                 <p>Method that returns a model with all of her relationships.</p>
                                 <pre><code class="cs">//Method that returns a model with all of her relationships based on informed Id.
-using (var Ecrud = new ECRUD.OracleMapping())
+using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employee = Ecrud.Find&ltEmployee&gt(200, DataBase.HR);
+    var Employee = ECRUD.Find<Employee>(200, DataBase.HR);
+}
+
+//Method that returns a model with all of her relationships based on informed Id with constructor parameters.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = ECRUD.Find<Employee>(200, DataBase.HR, new object[] { "Willian" });
 }
 
 //Method that returns a model with all of her relationships based on the specified condition (use table fields).
-using (var Ecrud = new ECRUD.OracleMapping())
+using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employee = Ecrud.Find&ltEmployee&gt("EMAIL = 'DOCONNEL'", DataBase.HR);
+    var Employee = ECRUD.Find<Employee>("EMAIL = 'DOCONNEL'", DataBase.HR);
+}
+
+//Method that returns a model with all of her relationships based on the specified condition (use table fields) with constructor parameters.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = ECRUD.Find<Employee>("EMAIL = 'DOCONNEL'", DataBase.HR, new object[] { "Willian" });
 }</code></pre>
                             </section>
                         </div>
