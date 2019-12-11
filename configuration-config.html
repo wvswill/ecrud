@@ -204,6 +204,10 @@
                                 <h3>NET Standard</h3>
 
                                 <p>Configuration for the (Web/App) .Config file. Requires the PathLog and PathFile keys. The connectionString will be used in the enum.</p>
+
+                                <p>Packages dependencies.</p>
+                                <pre><code class="cs">PM> Oracle.ManagedDataAccess</code></pre>
+
                                 <pre><code class="xml">&lt?xml version="1.0" encoding="utf-8" ?&gt
 &ltconfiguration&gt
     &ltstartup&gt
@@ -220,6 +224,12 @@
                                 <h3>NET Core</h3>
 
                                 <p>Configuration for the appsettings.json file. Requires the PathLog and PathFile keys. The connectionString will be used in the enum.</p>
+
+                                <p>Packages dependencies.</p>
+                                <pre><code class="cs">PM> Oracle.ManagedDataAccess.Core</code></pre>
+                                <pre><code class="cs">PM> Microsoft.Extensions.Configuration</code></pre>
+                                <pre><code class="cs">PM> Microsoft.Extensions.Configuration.Json</code></pre>
+
                                 <pre><code class="json">{
 "ConnectionStrings": {
     "HR": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DESKTOP-KIC6KFS.localdomain)(PORT=1521))(CONNECT_DATA=(SERVER = DEDICATED)(SERVICE_NAME = XE)));User Id=sys;Password=19851988WV;DBA Privilege=SYSDBA"
@@ -229,6 +239,10 @@
     "PathFile": "C:\\ECRUDLog\\ECRUD\\ECRUD.txt"
 }
 }</code></pre>
+                                <p>Settings</p>
+                                <ul>
+                                    <li>Need to change the <strong>Copy to Output Directory</strong> property to <strong>Copy always</strong> of the appsettings.json file</li>
+                                </ul>
                             </section>
                         </div>
                     </div>

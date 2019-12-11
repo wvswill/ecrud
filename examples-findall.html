@@ -207,25 +207,51 @@
                                 <pre><code class="cs">//Method that returns a list of your model and its relationships.
 using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employees = ECRUD.FindAll<Employee>(DataBase.HR);
+    var Employees = ECRUD.FindAll&ltEmployee&gt(DataBase.HR);
 }
 
 //Method that returns a list of your model and its relationships with constructor parameters.
 using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employees = ECRUD.FindAll<Employee>(DataBase.HR, new object[] { "Willian" });
+    var Employees = ECRUD.FindAll&ltEmployee&gt(DataBase.HR, new object[] { "Willian" });
 }
 
 //Method that returns a list of your model and its relationships based on the specified condition (use table fields).
 using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employees = ECRUD.FindAll<Employee>("DEPARTMENT_ID = 60", DataBase.HR);
+    var Employees = ECRUD.FindAll&ltEmployee&gt("DEPARTMENT_ID = 60", DataBase.HR);
 }
 
 //Method that returns a list of your model and its relationships based on the specified condition (use table fields)  with constructor parameters.
 using (var ECRUD = new ECRUD.OracleMapping())
 {
-    var Employees = ECRUD.FindAll<Employee>("DEPARTMENT_ID = 60", DataBase.HR, new object[] { "Willian" });
+    var Employees = ECRUD.FindAll&ltEmployee&gt("DEPARTMENT_ID = 60", DataBase.HR, new object[] { "Willian" });
+}</code></pre>
+                                <h3>Code Async</h3>
+
+                                <p>Method that returns a list of your model and its relationships asynchronous.</p>
+                                <pre><code class="cs">//Method that returns a list of your model and its relationships.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAllAsync&ltEmployee&gt(DataBase.HR);
+}
+
+//Method that returns a list of your model and its relationships with constructor parameters.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAllAsync&ltEmployee&gt(DataBase.HR, new object[] { "Willian" });
+}
+
+//Method that returns a list of your model and its relationships based on the specified condition (use table fields).
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAllAsync&ltEmployee&gt("DEPARTMENT_ID = 60", DataBase.HR);
+}
+
+//Method that returns a list of your model and its relationships based on the specified condition (use table fields)  with constructor parameters.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAllAsync&ltEmployee&gt("DEPARTMENT_ID = 60", DataBase.HR, new object[] { "Willian" });
 }</code></pre>
                             </section>
                         </div>
