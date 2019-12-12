@@ -219,6 +219,24 @@ using (var Ecrud = new ECRUD.OracleMapping())
 {
     var Inserted = Ecrud.Insert(Employee, DataBase.HR);
 }</code></pre>
+                                <h3>Code Async</h3>
+
+                                <p>Method to insert based on a model.</p>
+                                <pre><code class="cs">//Method to insert based on a model.
+var Employee = new Employee();
+Employee.FirstName = "Willian";
+Employee.LastName = "Vale";
+Employee.Email = "WVALE";
+Employee.PhoneNumber = "123.123.9999";
+Employee.HireDate = new DateTime(2000, 01, 01);
+Employee.JobId = "IT_PROG";
+Employee.Salary = 20000;
+Employee.DepartmentId = 60;
+
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Inserted = await ECRUD.InsertAsync(Employee, DataBase.HR);
+}</code></pre>
                             </section>
                         </div>
                     </div>

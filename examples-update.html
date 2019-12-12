@@ -214,6 +214,19 @@ using (var Ecrud = new ECRUD.OracleMapping())
 
     var Updateed = Ecrud.Update(Employee, DataBase.HR);
 }</code></pre>
+                                <h3>Code Async</h3>
+
+                                <p>Method to update based on a model.</p>
+                                <pre><code class="cs">//Method to update based on a model.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAsync<Employee>("FIRST_NAME = 'WILLIAN' AND LAST_NAME = 'VALE'", DataBase.HR);
+
+    Employee.Email = "WILLVALE";
+    Employee.Salary = 30000;
+
+    var Updateed = await ECRUD.UpdateAsync(Employee, DataBase.HR);
+}</code></pre>
                             </section>
                         </div>
                     </div>

@@ -211,6 +211,16 @@ using (var Ecrud = new ECRUD.OracleMapping())
 
     var Deleted = Ecrud.Delete(Employee, DataBase.HR);
 }</code></pre>
+                                <h3>Code Async</h3>
+
+                                <p>Method to delete based on a model.</p>
+                                <pre><code class="cs">//Method to delete based on a model.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    var Employee = await ECRUD.FindAsync<Employee>("FIRST_NAME = 'WILLIAN' AND LAST_NAME = 'VALE'", DataBase.HR);
+
+    var Deleted = await ECRUD.DeleteAsync(Employee, DataBase.HR);
+}</code></pre>
                             </section>
                         </div>
                     </div>
