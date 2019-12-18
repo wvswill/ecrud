@@ -23,6 +23,41 @@
     <style type="text/css">
         .navbar {
             padding: 11px 1rem;
+        }	  
+        #integration-list ul {
+            padding: 0;
+            margin: 20px 0;
+        }
+        #integration-list ul > li {
+            list-style: none;
+            border-top: 1px solid #ddd;
+            display: block;
+            padding: 5px;
+            overflow: hidden;
+        }
+        #integration-list ul:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+        #integration-list ul > li:hover {
+            background: #eaecf4;
+        }
+        .expand {
+            display: block;
+            text-decoration: none;            
+            cursor: pointer;
+        }
+        .detail {
+            margin: 10px 0 10px 0px;
+            display: none;            
+        }
+        .right-arrow {
+            margin-top: 0px;
+            margin-left: 20px;
+            width: 10px;
+            height: 100%;
+            float: right;
+            font-weight: bold;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -194,8 +229,35 @@
                         <div class="col-xl-12 col-md-12 col-lg-12">
                             <section id="main-section">
                                 <header class="page-header">
-                                    <h1>GetDataReader</h1>
+                                    <h1>GetDataReader</h1>         
+                                    <p>Example method GetDataReader.</p>
                                 </header>
+                                <h2>Standard</h2>
+                                <p>Method that returns a datatable based on the SQL statement informed.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>C.I.Agent Solutions</h4>
+                                                    <p>Method that returns a datatable based on the SQL statement informed.</p>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">//param name="strQuery" SQL Statement
+//param name="DataBase" DataBase                                    
+using (var Ecrud = new ECRUD.Oracle())
+{
+    var strQuery = "SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200";
+
+    var Employees = Ecrud.GetDataTable(strQuery, DataBase.HR);
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                    </ul>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -217,6 +279,18 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
+        $(function() {
+            $(".expand").on( "click", function() {
+                $(this).next().slideToggle(200);
+                $expand = $(this).find(">:first-child");
+                
+                if($expand.text() == "+") {
+                $expand.text("-");
+                } else {
+                $expand.text("+");
+                }
+            });
+        });
     </script>
 </body>
 </html>

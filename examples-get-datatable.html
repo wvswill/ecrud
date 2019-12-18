@@ -23,19 +23,41 @@
     <style type="text/css">
         .navbar {
             padding: 11px 1rem;
+        }        
+        #integration-list ul {
+            padding: 0;
+            margin: 20px 0;
         }
-        
-        .accordions {
-            background-color: #eee;
-            color: #444;
+        #integration-list ul > li {
+            list-style: none;
+            border-top: 1px solid #ddd;
+            display: block;
+            padding: 5px;
+            overflow: hidden;
+        }
+        #integration-list ul:last-child {
+            border-bottom: 1px solid #ddd;
+        }
+        #integration-list ul > li:hover {
+            background: #eaecf4;
+        }
+        .expand {
+            display: block;
+            text-decoration: none;            
             cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            transition: 0.4s;
+        }
+        .detail {
+            margin: 10px 0 10px 0px;
+            display: none;            
+        }
+        .right-arrow {
+            margin-top: 0px;
+            margin-left: 20px;
+            width: 10px;
+            height: 100%;
+            float: right;
+            font-weight: bold;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -212,226 +234,464 @@
                                 </header>
                                 <h2>Standard</h2>
                                 <p>Method that returns a datatable based on the SQL statement informed.</p>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase                                    
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
 using (var Ecrud = new ECRUD.Oracle())
 {
-    var strQuery = "SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200";
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
 
-    var Employees = Ecrud.GetDataTable(strQuery, DataBase.HR);
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), DataBase.HR);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, String[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    string[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR.ToString() } };
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), DataBase.HR, Param);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, Object[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    object[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR } };
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), DataBase.HR, Param);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD");
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>     
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    string[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR.ToString() } };
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Param);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>    
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    object[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR } };
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Param);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, OracleConnection strConnection</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strConnection" Oracle Connection (Open)
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>    
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection strConnection</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada.
+// Method that returns a datatable based on the SQL statement informed.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strConnection" Conexao do Oracle (Aberta) / Oracle Connection (Open)
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    OracleConnection Connection = new OracleConnection(ConfigurationManager.ConnectionStrings["HR"].ToString());
+    Connection.Open();
+
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
+
+    var Employees = Ecrud.GetDataTable(sbQuery.ToString(), Connection);
 }
-</code></pre>
-                                </div>
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                
+                                    </ul>
+                                </div>                                                             
                                 <h2 style="padding-top: 10px;">GetDataTableBind</h2>
                                 <p>Method that returns a datatable based on the SQL statement informed using Bind Variables.</p>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, String[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters                      
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada utilizando Bind Variables.
+// Method that returns a datatable based on the SQL statement informed using Bind Variables.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = :EMPLOYEE_ID AND DEPARTMENT_ID = :DEPARTMENT_ID");
+
+    string[,] Params = { { ":EMPLOYEE_ID", "200" }, { ":DEPARTMENT_ID", "10" } };
+
+    var Employees = Ecrud.GetDataTableBind(sbQuery.ToString(), DataBase.HR, Params);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, Object[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters                      
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada utilizando Bind Variables.
+// Method that returns a datatable based on the SQL statement informed using Bind Variables.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = :EMPLOYEE_ID AND DEPARTMENT_ID = :DEPARTMENT_ID");
+
+    object[,] Params = { { ":EMPLOYEE_ID", 200 }, { ":DEPARTMENT_ID", 10 } };
+
+    var Employees = Ecrud.GetDataTableBind(sbQuery.ToString(), DataBase.HR, Params);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters          
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>  
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada utilizando Bind Variables.
+// Method that returns a datatable based on the SQL statement informed using Bind Variables.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Banco de Dados / DataBase
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = :EMPLOYEE_ID AND DEPARTMENT_ID = :DEPARTMENT_ID");
+
+    string[,] Params = { { ":EMPLOYEE_ID", "200" }, { ":DEPARTMENT_ID", "10" } };
+
+    var Employees = Ecrud.GetDataTableBind(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters          
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>  
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada utilizando Bind Variables.
+// Method that returns a datatable based on the SQL statement informed using Bind Variables.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Banco de Dados / DataBase
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = :EMPLOYEE_ID AND DEPARTMENT_ID = :DEPARTMENT_ID");
+
+    object[,] Params = { { ":EMPLOYEE_ID", 200 }, { ":DEPARTMENT_ID", 10 } };
+
+    var Employees = Ecrud.GetDataTableBind(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params);
 }
-</code></pre>
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                    </ul>
                                 </div>
                                 <h2 style="padding-top: 10px;">GetDataTableWithException</h2>
                                 <p>Method that returns a data table based on informed SQL statement with runtime errors</p>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="strException" Return on Execution Error
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), DataBase.HR, out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, String[,] Params, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    string[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR.ToString() } };
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), DataBase.HR, Param, out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, Enum DataBase, Object[,] Params, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="DataBase" DataBase
-//param name="Params" Array Parameters
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>  
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    object[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR } };
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), DataBase.HR, Param, out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    string[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR.ToString() } };
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Param, out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strDataBase" DataBase Name
-//param name="strSchema" Schema Name
-//param name="strPass" Password
-//param name="Params" Array Parameters
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_EMPLOYEES");
+
+    object[,] Param = { { "P_CURSOR", "", ECRUD.Enums.DataTypes.REFCURSOR } };
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Param, out string strException);
 }
-</code></pre>
-                                </div>
-                                <button class="accordions OpenPanel">String strQuery, OracleConnection strConnection, out String strException</button>
-                                <div class="panel" style="display: none;">
-                                    <pre><code class="cs">//param name="strQuery" SQL Statement
-//param name="strConnection" Oracle Connection (Open)
-//param name="strException" Return on Execution Error
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection strConnection, out String strException</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que retorna uma tabela de dados com base na instrução SQL informada com erros de execução.
+// Method that returns a data table based on informed SQL statement with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strConnection" Conexao do Oracle (Aberta) / Oracle Connection (Open)
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
 using (var Ecrud = new ECRUD.Oracle())
 {
-    //TODO
+    OracleConnection Connection = new OracleConnection(ConfigurationManager.ConnectionStrings["HR"].ToString());
+    Connection.Open();
+
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE EMPLOYEE_ID = 200");
+
+    var Employees = Ecrud.GetDataTableWithException(sbQuery.ToString(), Connection, out string strException);
 }
-</code></pre>
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                    </ul>
                                 </div>
                             </section>
                         </div>
@@ -458,22 +718,18 @@ using (var Ecrud = new ECRUD.Oracle())
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
-
-        var acc = document.getElementsByClassName("OpenPanel");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
+        $(function() {
+            $(".expand").on( "click", function() {
+                $(this).next().slideToggle(200);
+                $expand = $(this).find(">:first-child");
+                
+                if($expand.text() == "+") {
+                $expand.text("-");
                 } else {
-                    panel.style.display = "block";
+                $expand.text("+");
                 }
             });
-        }
+        });
     </script>
 </body>
-
 </html>
