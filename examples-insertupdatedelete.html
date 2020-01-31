@@ -699,7 +699,1494 @@ using (var Ecrud = new ECRUD.Oracle())
                                             </div>
                                         </li>                                                                                                                                                                                                          
                                     </ul>
-                                </div>   
+                                </div>  
+                                <h2>InsertUpdateDeleteReturning</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed, returning value.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    string[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE.ToString()},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturning(sbQuery.ToString(), DataBase.HR, Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    object[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturning(sbQuery.ToString(), DataBase.HR, Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    string[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE.ToString()},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturning(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    object[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturning(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                                          
+                                    </ul>
+                                </div>  
+                                <h2>InsertUpdateDeleteReturningBind</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    string[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBind(sbQuery.ToString(), DataBase.HR, Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    object[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBind(sbQuery.ToString(), DataBase.HR, Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    string[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBind(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    object[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBind(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                                          
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteMultipleReturning</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed, returning values.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valores.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning values.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Oracle = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_NAME");
+
+    string[,] Params = { {"P_EMPLOYEE_ID", "200", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                                {"P_FIRST_NAME", "", ECRUD.Enums.DataTypes.OUT.ToString()},
+                                {"P_LAST_NAME", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var arrRet = Oracle.InsertUpdateDeleteMultipleReturning(sbQuery.ToString(), DataBase.HR, Params);
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valores.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning values.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Oracle = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_NAME");
+
+    object[,] Params = { {"P_EMPLOYEE_ID", "200", ECRUD.Enums.DataTypes.VARCHAR2},
+                                {"P_FIRST_NAME", "", ECRUD.Enums.DataTypes.OUT},
+                                {"P_LAST_NAME", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var arrRet = Oracle.InsertUpdateDeleteMultipleReturning(sbQuery.ToString(), DataBase.HR, Params);
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valores.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning values.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Oracle = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_NAME");
+
+    string[,] Params = { {"P_EMPLOYEE_ID", "200", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                                {"P_FIRST_NAME", "", ECRUD.Enums.DataTypes.OUT.ToString()},
+                                {"P_LAST_NAME", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var arrRet = Oracle.InsertUpdateDeleteMultipleReturning(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valores.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning values.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Oracle = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.GET_NAME");
+
+    object[,] Params = { {"P_EMPLOYEE_ID", "200", ECRUD.Enums.DataTypes.VARCHAR2},
+                                {"P_FIRST_NAME", "", ECRUD.Enums.DataTypes.OUT},
+                                {"P_LAST_NAME", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var arrRet = Oracle.InsertUpdateDeleteMultipleReturning(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                                          
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteWithException</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES (HR.EMPLOYEES_SEQ.NEXTVAL,");
+    sbQuery.Append("             'WILLIAN',");
+    sbQuery.Append("             'VALE',");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '100',");
+    sbQuery.Append("             '60')");
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), DataBase.HR, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li> 
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    string[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"P_START_DATE", DateTime.Now.ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                {"P_END_DATE", DateTime.Now.AddYears(1).ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()} };
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>  
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    object[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER},
+                {"P_START_DATE", DateTime.Now, ECRUD.Enums.DataTypes.DATE},
+                {"P_END_DATE", DateTime.Now.AddYears(1), ECRUD.Enums.DataTypes.DATE},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER} };
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>     
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES (HR.EMPLOYEES_SEQ.NEXTVAL,");
+    sbQuery.Append("             'WILLIAN',");
+    sbQuery.Append("             'VALE',");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60')");
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    string[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"P_START_DATE", DateTime.Now.ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                {"P_END_DATE", DateTime.Now.AddYears(1).ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()} };
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    object[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER},
+                {"P_START_DATE", DateTime.Now, ECRUD.Enums.DataTypes.DATE},
+                {"P_END_DATE", DateTime.Now.AddYears(1), ECRUD.Enums.DataTypes.DATE},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER} };
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection strConnection, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strConnection" Conexao do Oracle (Aberta) / Oracle Connection (Open)
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleConnection Connection = new OracleConnection(ConfigurationManager.ConnectionStrings["HR"].ToString());
+    Connection.Open();
+
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES (HR.EMPLOYEES_SEQ.NEXTVAL,");
+    sbQuery.Append("             'WILLIAN',");
+    sbQuery.Append("             'VALE',");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60')");
+
+    var Inserted = Ecrud.InsertUpdateDeleteWithException(sbQuery.ToString(), Connection, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteReturningWithException</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed, returning value and runtime errors.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>string strQuery, System.Enum DataBase, string[,] Params, out string strException, string strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor e com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value and runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    string[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE.ToString()},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>string strQuery, System.Enum DataBase, object[,] Params, out string strException, string strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor e com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value and runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    object[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>string strQuery, string strDataBase, string strSchema, string strPass, string[,] Params, out string strException, string strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor e com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value and runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    string[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE.ToString()},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>string strQuery, string strDataBase, string strSchema, string strPass, object[,] Params, out string strException, string strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada, retornando valor e com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed, returning value and runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    object[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE},
+                            {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                            {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER},
+                            {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER},
+                            {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                                          
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteReturningBindWithException</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value with runtime errors.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, String[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    string[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, Enum DataBase, Object[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    object[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindWithException(sbQuery.ToString(), DataBase.HR, Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, String[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    string[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>      
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, String strDataBase, String strSchema, String strPass, Object[,] Params, out String strException, String strClientInfo = "", bool booEnableLog = true</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor com erros de execução.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value with runtime errors.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="strDataBase" Nome do Banco de Dados / DataBase Name
+// param name="strSchema" Nome do Schema / Schema Name
+// param name="strPass" Senha / Password
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strException" Retorno do Erro de Execução / Return on Execution Error
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+// param name="booEnableLog" Habilita o Log / Enable Log
+using (var Ecrud = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    object[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindWithException(sbQuery.ToString(), "HR", "HR", "YOURPASSWORD", Params, out string strException, "");
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                                          
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteTransaction</h2>
+                                <p>Method that inserts, updates or deletes records based on the SQL statement entered using transaction.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando transação.
+// Method that inserts, updates or deletes records based on the SQL statement entered using transaction.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             'WILLIAN',");
+    sbQuery.Append("             'VALE',");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60')");
+
+    if (Ecrud.InsertUpdateDeleteTransaction(sbQuery.ToString(), transaction.Connection, transaction))
+    {
+        transaction.Commit();
+    }
+    else
+    {
+        transaction.Rollback();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando transação.
+// Method that inserts, updates or deletes records based on the SQL statement entered using transaction.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+// param name="Params" Array de Parametros(String) / Array Parameters(String)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    string[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                                {"P_START_DATE", DateTime.Now.ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                                {"P_END_DATE", DateTime.Now.AddYears(1).ToString(), ECRUD.Enums.DataTypes.DATE.ToString()},
+                                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()} };
+
+    if (Ecrud.InsertUpdateDeleteTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, ""))
+    {
+        transaction.Commit();
+    }
+    else
+    {
+        transaction.Rollback();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>   
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando transação.
+// Method that inserts, updates or deletes records based on the SQL statement entered using transaction.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_JOB_HISTORY");
+
+    object[,] Params = { {"P_EMP_ID", "200", ECRUD.Enums.DataTypes.NUMBER},
+                                {"P_START_DATE", DateTime.Now, ECRUD.Enums.DataTypes.DATE},
+                                {"P_END_DATE", DateTime.Now.AddYears(1), ECRUD.Enums.DataTypes.DATE},
+                                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER} };
+
+    if (Ecrud.InsertUpdateDeleteTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, ""))
+    {
+        transaction.Commit();
+    }
+    else
+    {
+        transaction.Rollback();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                               
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteReturningTransaction</h2>
+                                <p>Method that inserts, updates or deletes records based on the SQL statement entered using transaction, returning value.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando transação, retornando valor.
+// Method that inserts, updates or deletes records based on the SQL statement entered using transaction, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+// param name="Params" Array de Parametros(String) / Array Parameters(String)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    string[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE.ToString()},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2.ToString()},
+                {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER.ToString()},
+                {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT.ToString()} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, "");
+
+    if (Id.Equals(0))
+    {
+        transaction.Rollback();
+    }
+    else
+    {
+        transaction.Commit();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando transação, retornando valor.
+// Method that inserts, updates or deletes records based on the SQL statement entered using transaction, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder().Append("HR.ADD_EMPLOYEES");
+
+    object[,] Params = { {"P_FIRST_NAME", "WILLIAN", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_LAST_NAME", "VALE", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_EMAIL", DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_PHONE_NUMBER", "111.222.3333", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_HIRE_DATE", "06/03/1988", ECRUD.Enums.DataTypes.DATE},
+                {"P_JOB_ID", "IT_PROG", ECRUD.Enums.DataTypes.VARCHAR2},
+                {"P_SALARY", "17000", ECRUD.Enums.DataTypes.NUMBER},
+                {"P_COMMISSION_PCT", "", ECRUD.Enums.DataTypes.NUMBER},
+                {"P_MANAGER_ID", "100", ECRUD.Enums.DataTypes.NUMBER},
+                {"P_DEPARTMENT_ID", "60", ECRUD.Enums.DataTypes.NUMBER},
+                {"p_EMPLOYEE_ID", "", ECRUD.Enums.DataTypes.OUT} };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, "");
+
+    if (Id.Equals(0))
+    {
+        transaction.Rollback();
+    }
+    else
+    {
+        transaction.Commit();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                            
+                                    </ul>
+                                </div>
+                                <h2>InsertUpdateDeleteReturningBindTransaction</h2>
+                                <p>Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.</p>
+                                <div id="integration-list">
+                                    <ul>
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, String[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="Params" Array de Parametros / Array Parameters
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    string[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, "");
+
+    if (Id.Equals(0))
+    {
+        transaction.Rollback();
+    }
+    else
+    {
+        transaction.Commit();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                         
+                                        <li>
+                                            <a class="expand">
+                                                <div class="right-arrow">+</div>
+                                                <div>
+                                                    <h4>String strQuery, OracleConnection Connection, OracleTransaction Transaction, Object[,] Params, String strClientInfo = ""</h4>                                                    
+                                                </div>
+                                            </a>                                
+                                            <div class="detail">                                                                                                                                                                                                            
+                                                <pre><code class="cs">// Método que insere, atualiza ou deleta registros com base na instrução SQL informada utilizando Bind Variables utilizando transação, retornando valor.
+// Method that inserts, updates or deletes records based on SQL statement informed using Bind Variables using transaction, returning value.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="Connection" Conexão / Connection
+// param name="Transaction" Transação / Transaction
+// param name="Params" Array de Parametros(Object) / Array Parameters(Object)
+// param name="strClientInfo" Especifica as Informações do Cliente Para a Conexão / Specifies the client information for the connection
+using (var Ecrud = new ECRUD.Oracle())
+{
+    OracleTransaction transaction = Ecrud.OpenTransaction(DataBase.HR);
+
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("BEGIN INSERT INTO HR.EMPLOYEES (EMPLOYEE_ID,");
+    sbQuery.Append("                          FIRST_NAME,");
+    sbQuery.Append("                          LAST_NAME,");
+    sbQuery.Append("                          EMAIL,");
+    sbQuery.Append("                          PHONE_NUMBER,");
+    sbQuery.Append("                          HIRE_DATE,");
+    sbQuery.Append("                          JOB_ID,");
+    sbQuery.Append("                          SALARY,");
+    sbQuery.Append("                          COMMISSION_PCT,");
+    sbQuery.Append("                          MANAGER_ID,");
+    sbQuery.Append("                          DEPARTMENT_ID)");
+    sbQuery.Append("     VALUES ((SELECT MAX(EMPLOYEE_ID) + 1 FROM HR.EMPLOYEES),");
+    sbQuery.Append("             :FIRST_NAME,");
+    sbQuery.Append("             :LAST_NAME,");
+    sbQuery.Append("             '" + DateTime.Now.ToString().Replace("/", "").Replace(":", "") + "@ECRUD.COM',");
+    sbQuery.Append("             '111.222.3333',");
+    sbQuery.Append("             '06/03/1988',");
+    sbQuery.Append("             'IT_PROG',");
+    sbQuery.Append("             '17000',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '',");
+    sbQuery.Append("             '60') ");
+    sbQuery.Append("RETURNING EMPLOYEE_ID INTO :newId; END;");
+
+    object[,] Params = { { ":FIRST_NAME", "WILLIAN" }, { ":LAST_NAME", "VALE" }, { ":newId", "" } };
+
+    var Id = Ecrud.InsertUpdateDeleteReturningBindTransaction(sbQuery.ToString(), transaction.Connection, transaction, Params, "");
+
+    if (Id.Equals(0))
+    {
+        transaction.Rollback();
+    }
+    else
+    {
+        transaction.Commit();
+    }
+}
+</code></pre>                                                                                                                                                                                                                        
+                                            </div>
+                                        </li>                                                                                                                                                                                            
+                                    </ul>
+                                </div>
                             </section>
                         </div>
                     </div>

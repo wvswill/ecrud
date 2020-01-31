@@ -194,8 +194,27 @@
                         <div class="col-xl-12 col-md-12 col-lg-12">
                             <section id="main-section">
                                 <header class="page-header">
-                                    <h1>Dynamic List</h1>
+                                    <h1>DynamicList</h1>
+                                    <p>Example method DynamicList.</p>
                                 </header>
+                                <h2>Documentation</h2>
+
+                                <p>This example uses Oracle HR schema.</p>
+
+                                <h3>Code</h3>
+
+                                <p>Method that returns a list of dynamic objects in all fields based on informed SQL statement.</p>
+                                <pre><code class="cs">// Metodo que retorna uma lista de objetos dinamicos com todos os campos baseado na instrução SQL informada.
+// Method that returns a list of dynamic objects in all fields based on informed SQL statement.
+// param name="strQuery" Instrução SQL / SQL Statement
+// param name="DataBase" Banco de Dados / DataBase
+// param name="EnablePascalCase" Habilita Formamatação em Pascal Case / Formatting enables Pascal Case
+using (var Ecrud = new ECRUD.OracleDynamic())
+{
+    StringBuilder sbQuery = new StringBuilder().Append("SELECT * FROM HR.EMPLOYEES WHERE DEPARTMENT_ID = 60");
+
+    var Employees = Ecrud.DynamicList(sbQuery.ToString(), DataBase.HR, true);
+}</code></pre>                               
                             </section>
                         </div>
                     </div>

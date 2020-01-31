@@ -206,7 +206,7 @@
                                 <p>Configuration for the (Web/App) .Config file. Requires the PathLog and PathFile keys. The connectionString will be used in the enum.</p>
 
                                 <p>Packages dependencies.</p>
-                                <pre><code class="cs">PM> Oracle.ManagedDataAccess</code></pre>
+                                <pre><code class="cs">PM> Install-Package ECRUD</code></pre>
 
                                 <pre><code class="xml">&lt?xml version="1.0" encoding="utf-8" ?&gt
 &ltconfiguration&gt
@@ -218,7 +218,7 @@
         &ltadd key="PathFile" value="C:\ECrudLog\Demo\Demo.txt"/&gt
     &lt/appSettings&gt
     &ltconnectionStrings&gt
-        &ltadd name="HR" connectionString="Data Source=HR;Id=sys;Password=yourpassword"/&gt
+        &ltadd name="HR" connectionString="Data Source=HR;User Id=sys;Password=yourpassword"/&gt
     &lt/connectionStrings&gt
 &lt/configuration&gt</code></pre>
                                 <h3>NET Core</h3>
@@ -226,10 +226,8 @@
                                 <p>Configuration for the appsettings.json file. Requires the PathLog and PathFile keys. The connectionString will be used in the enum.</p>
 
                                 <p>Packages dependencies.</p>
-                                <pre><code class="cs">PM> Oracle.ManagedDataAccess.Core</code></pre>
-                                <pre><code class="cs">PM> Microsoft.Extensions.Configuration</code></pre>
-                                <pre><code class="cs">PM> Microsoft.Extensions.Configuration.Json</code></pre>
-
+                                <pre><code class="cs">PM> Install-Package ECRUD.Core</code></pre>
+                                
                                 <pre><code class="json">{
 "ConnectionStrings": {
     "HR": "Data Source=HR;User Id=sys;Password=yourpassword"
