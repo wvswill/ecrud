@@ -278,6 +278,22 @@ public class JobHistory
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
+
+        $(document).ready(function() {
+            AdjustMenu();
+            $(window).resize(AdjustMenu());
+            window.addEventListener('resize', AdjustMenu);
+        });
+
+        function AdjustMenu() {
+            if (window.innerWidth <= 768){
+                document.querySelector('#accordionSidebar').classList.add("toggled");
+                document.querySelector('#page-top').classList.add("sidebar-toggled");
+            } else {
+                document.querySelector('#accordionSidebar').classList.remove("toggled");
+                document.querySelector('#page-top').classList.remove("sidebar-toggled");
+            }
+        };
     </script>
 </body>
 </html>

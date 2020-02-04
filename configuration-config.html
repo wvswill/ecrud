@@ -218,7 +218,7 @@
         &ltadd key="PathFile" value="C:\ECrudLog\Demo\Demo.txt"/&gt
     &lt/appSettings&gt
     &ltconnectionStrings&gt
-        &ltadd name="HR" connectionString="Data Source=HR;User Id=sys;Password=yourpassword"/&gt
+        &ltadd name="HR" connectionString="Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DESKTOP-KIC6KFS.localdomain)(PORT=1521))(CONNECT_DATA=(SERVER = DEDICATED)(SERVICE_NAME = XE)));User Id=sys;Password=yourpassword"/&gt
     &lt/connectionStrings&gt
 &lt/configuration&gt</code></pre>
                                 <h3>NET Core</h3>
@@ -230,7 +230,7 @@
                                 
                                 <pre><code class="json">{
 "ConnectionStrings": {
-    "HR": "Data Source=HR;User Id=sys;Password=yourpassword"
+    "HR": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=DESKTOP-KIC6KFS.localdomain)(PORT=1521))(CONNECT_DATA=(SERVER = DEDICATED)(SERVICE_NAME = XE)));User Id=sys;Password=yourpassword"
 },
 "ECRUDLog": {
     "PathLog": "C:\\ECRUDLog\\ECRUD",
@@ -274,6 +274,22 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
+
+        $(document).ready(function() {
+            AdjustMenu();
+            $(window).resize(AdjustMenu());
+            window.addEventListener('resize', AdjustMenu);
+        });
+
+        function AdjustMenu() {
+            if (window.innerWidth <= 768){
+                document.querySelector('#accordionSidebar').classList.add("toggled");
+                document.querySelector('#page-top').classList.add("sidebar-toggled");
+            } else {
+                document.querySelector('#accordionSidebar').classList.remove("toggled");
+                document.querySelector('#page-top').classList.remove("sidebar-toggled");
+            }
+        };
     </script>
 </body>
 </html>
