@@ -266,6 +266,11 @@ public class Employee
     [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.NUMBER)]
     public long? DepartmentId { get; set; }
 
+    //Column
+    [ECRUD.Column("PHOTO")]
+    [ECRUD.NoteDataType(ECRUD.Enums.DataTypes.BLOB)]
+    public byte[] Photo { get; set; }
+
     //One to one mapping
     [ECRUD.OneToOne("JOBS", "JOB_ID", "JOB_ID")]
     public Job Job { get; set; }
