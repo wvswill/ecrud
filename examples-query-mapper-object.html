@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head> 
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -135,21 +135,21 @@
                     <a class="collapse-item" href="examples-dynamic-object.html">DynamicObject</a>
                     </div>
                 </div>
-            </li>            
-
-            <li class="nav-item">
+            </li>     
+            
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQueryMapper" aria-expanded="true" aria-controls="collapseQueryMapper">
                     <i class="fas fa-database"></i>
                     <span>Oracle (Query Mapper)</span>
                 </a>
-                <div id="collapseQueryMapper" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseQueryMapper" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Methods:</h6>
-                    <a class="collapse-item" href="examples-query-mapper-object.html">DataTableToObject</a>
+                    <a class="collapse-item active" href="examples-query-mapper-object.html">DataTableToObject</a>
                     <a class="collapse-item" href="examples-query-mapper-list.html">DataTableToList</a>
                     </div>
                 </div>
-            </li> 
+            </li>  
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -164,7 +164,7 @@
                     <span>DataTypes</span></a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="examples-sequence-type.html">
                     <i class="fas fa-fw fa-ellipsis-v"></i>
                     <span>SequenceType</span></a>
@@ -206,28 +206,47 @@
                     <!-- Content Row -->
                     <div class="row">
                         <div class="col-xl-12 col-md-12 col-lg-12">
-                            <section id="main-section">
+                            <section id="main-section">                                
                                 <header class="page-header">
-                                    <h1>Sequence Types</h1>
-                                    <p>Sequence Types available.</p>
-                                    
-                                    <h2>Max</h2>
-                                    <p>Used when there is no sequence.</p>
-                                    <pre><code class="cs">[ECRUD.PrimaryKey("DEPARTMENT_ID", SequenceType = ECRUD.Enums.SequenceType.Max)]</code></pre>
-
-                                    <h2>Name</h2>
-                                    <p>Used by sequence name.</p>
-                                    <pre><code class="cs">[ECRUD.PrimaryKey("EMPLOYEE_ID", SequenceType = ECRUD.Enums.SequenceType.Name, SequenceName = "EMPLOYEES_SEQ")]</code></pre>
-
-                                    <h2>None</h2>
-                                    <p>Used when there is sequence and trigger.</p>
-                                    <pre><code class="cs">[ECRUD.PrimaryKey("DEPARTMENT_ID", SequenceType = ECRUD.Enums.SequenceType.None)]</code></pre>
+                                    <h1>Query Mapper</h1> 
+                                    <p>Example method DataTableToObject.</p>
                                 </header>
+                                <h2>Documentation</h2>
+
+                                <p>This example uses Oracle HR schema.</p>
+
+                                <h3>Code</h3>
+
+                                <p>Method that returns a model based on custom query.</p>
+                                <pre><code class="cs">//Method that returns a model based on custom query.
+using (var ECRUD = new ECRUD.Oracle())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("SELECT * ");
+    sbQuery.Append("  FROM HR.EMPLOYEES ");
+    sbQuery.Append("WHERE  1 = 1 ");
+    sbQuery.Append("  AND EMPLOYEE_ID = '200'");
+
+    var Employee = ECRUD.GetDataTable(sbQuery.ToString(), DataBase.HR).DataTableToObject&ltEmployee&gt();
+}</code></pre>                                                          
                             </section>
                         </div>
                     </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
+                        <a href="#main-section" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-up fa-sm text-white-50"></i> Back to top</a>
+                    </div>
                 </div>
             </div>
+            <!-- Footer -->
+            <!-- <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; ECRUD</span>
+                    </div>
+                </div>
+            </footer> -->
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
