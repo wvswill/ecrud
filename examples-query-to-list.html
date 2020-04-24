@@ -106,12 +106,12 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMapping" aria-expanded="true" aria-controls="collapseMapping">
                     <i class="fas fa-fw fa-map"></i>
                     <span>Oracle (Mapping)</span>
                 </a>
-                <div id="collapseMapping" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapseMapping" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Custom Methods:</h6>
                     <a class="collapse-item" href="examples-find.html">Find</a>
@@ -119,6 +119,8 @@
                     <a class="collapse-item" href="examples-insert.html">Insert</a>
                     <a class="collapse-item" href="examples-update.html">Update</a>
                     <a class="collapse-item" href="examples-delete.html">Delete</a>
+                    <a class="collapse-item" href="examples-query-to-object.html">Query to Object</a>
+                    <a class="collapse-item active" href="examples-query-to-list.html">Query to List</a>
                     </div>
                 </div>
             </li>
@@ -135,21 +137,7 @@
                     <a class="collapse-item" href="examples-dynamic-object.html">DynamicObject</a>
                     </div>
                 </div>
-            </li>     
-            
-            <li class="nav-item active">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseQueryMapper" aria-expanded="true" aria-controls="collapseQueryMapper">
-                    <i class="fas fa-database"></i>
-                    <span>Oracle (Query Mapper)</span>
-                </a>
-                <div id="collapseQueryMapper" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Custom Methods:</h6>
-                    <a class="collapse-item active" href="examples-query-mapper-object.html">DataTableToObject</a>
-                    <a class="collapse-item" href="examples-query-mapper-list.html">DataTableToList</a>
-                    </div>
-                </div>
-            </li>  
+            </li>   
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -208,8 +196,8 @@
                         <div class="col-xl-12 col-md-12 col-lg-12">
                             <section id="main-section">                                
                                 <header class="page-header">
-                                    <h1>Query Mapper</h1> 
-                                    <p>Example method DataTableToObject.</p>
+                                    <h1>Find</h1> 
+                                    <p>Example method Find.</p>
                                 </header>
                                 <h2>Documentation</h2>
 
@@ -217,21 +205,35 @@
 
                                 <h3>Code</h3>
 
-                                <p>Method that returns a model based on custom query.</p>
-                                <pre><code class="cs">//Method that returns a model based on custom query.
-using (var ECRUD = new ECRUD.Oracle())
+                                <p>Method that returns a list of your model model.</p>
+                                <pre><code class="cs">//Method that returns a list of your model based on custom query.
+using (var ECRUD = new ECRUD.OracleMapping())
 {
     StringBuilder sbQuery = new StringBuilder();
 
     sbQuery.Append("SELECT * ");
     sbQuery.Append("  FROM HR.EMPLOYEES ");
     sbQuery.Append("WHERE  1 = 1 ");
-    sbQuery.Append("  AND EMPLOYEE_ID = '200'");
+    sbQuery.Append("  AND JOB_ID = 'IT_PROG'");
 
-    var Employee = ECRUD.GetDataTable(sbQuery.ToString(), DataBase.HR).DataTableToObject&ltEmployee&gt();
-}</code></pre>                                                          
-                            </section>
-                        </div>
+    var lstEmployee = ECRUD.QueryMapperToObjectList&ltEmployee&gt(sbQuery.ToString(), DataBase.HR);
+}</code></pre>                      
+                                <h3>Code Async</h3>
+
+                                <p>Method that returns a list of your model model asynchronous.</p>
+                                <pre><code class="cs">//Method that returns a list of your model based on custom query.
+using (var ECRUD = new ECRUD.OracleMapping())
+{
+    StringBuilder sbQuery = new StringBuilder();
+
+    sbQuery.Append("SELECT * ");
+    sbQuery.Append("  FROM HR.EMPLOYEES ");
+    sbQuery.Append("WHERE  1 = 1 ");
+    sbQuery.Append("  AND JOB_ID = 'IT_PROG'");
+
+    var lstEmployee = await ECRUD.QueryMapperToObjectListAsync&ltEmployee&gt(sbQuery.ToString(), DataBase.HR);
+}</code></pre>       
+                            </section>                        </div>
                     </div>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"></h1>
